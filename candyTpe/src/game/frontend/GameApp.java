@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.logging.Level;
 
 public class GameApp extends Application {
 
@@ -40,10 +41,13 @@ public class GameApp extends Application {
 
 	public void Level1(ActionEvent actionEvent) {
 		selectLevel(Level1.class);
+        Stage.getWindows().get(0).hide();
 	}
 
-	public void Level2(ActionEvent actionEvent) {
+	public void Level2(ActionEvent actionEvent){
 		selectLevel(Level2.class);
+		Stage.getWindows().get(0).hide();
+
 	}
 
 	public void Level3(ActionEvent actionEvent) {
@@ -56,6 +60,7 @@ public class GameApp extends Application {
 		Scene scene = new Scene(frame);
 		secondStage.setResizable(false);
 		secondStage.setScene(scene);
+		secondStage.setTitle("Level "+level.toString().charAt(level.toString().length()-1));
 		secondStage.show();
 	}
 

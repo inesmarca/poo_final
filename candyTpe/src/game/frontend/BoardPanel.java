@@ -1,5 +1,6 @@
 package game.frontend;
 
+import game.backend.cell.Cell;
 import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
@@ -25,27 +26,21 @@ public class BoardPanel extends TilePane {
 			}
 		}
 	}
-	
-	public void setImage(int row, int column, Image image) {
 
+	public void setImage(int row, int column, Image image, Cell cell) {
 
+		if (cell!=null && cell.getBackground()!=null){
+			Light.Distant spotlight = new Light.Distant();
+			spotlight.setColor(cell.getBackground());
+			spotlight.setElevation(100);
+			Lighting lighting = new Lighting(spotlight);
+			cells[row][column].setEffect(lighting);
+		}
 
         cells[row][column].setImage(image);
 
 
 	}
-    public void setImageWithBackground(int row, int column, Image image, Color color) {
 
-        Light.Distant spotlight = new Light.Distant();
-        spotlight.setColor(color);
-        spotlight.setElevation(100);
-        Lighting lighting = new Lighting(spotlight);
-        cells[row][column].setEffect(lighting);
-
-        setImage(row, column, image);
-
-
-
-    }
 
 }
