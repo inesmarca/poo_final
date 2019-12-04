@@ -4,9 +4,11 @@ import game.backend.Grid;
 import game.backend.element.Element;
 import game.backend.element.Nothing;
 import game.backend.move.Direction;
+import javafx.scene.paint.Color;
+
 
 public class Cell {
-	
+	private Color background;
 	private Grid grid;
 	private Cell[] around = new Cell[Direction.values().length];
 	private Element content;
@@ -14,6 +16,13 @@ public class Cell {
 	public Cell(Grid grid) {
 		this.grid = grid;
 		this.content = new Nothing();
+
+	}
+	public Cell(Grid grid,Color background) {
+		this.grid = grid;
+		this.content = new Nothing();
+		this.background=background;
+
 	}
 	
 	public void setAround(Cell up, Cell down, Cell left, Cell right) {
@@ -38,7 +47,15 @@ public class Cell {
 	public Element getContent() {
 		return content;
 	}
-	
+
+	public Color getBackground() {
+		return background;
+	}
+
+	public void setBackground(Color background) {
+		this.background = background;
+	}
+
 	public void clearContent() {
 		if (content.isMovable()) {
 			Direction[] explosionCascade = content.explode();

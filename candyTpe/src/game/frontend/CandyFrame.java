@@ -46,8 +46,17 @@ public class CandyFrame extends VBox {
 						Cell cell = CandyFrame.this.game.get(i, j);
 						Element element = cell.getContent();
 						Image image = images.getImage(element);
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null)));
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image)));
+						// cambio en el codigo, esto nos permite actualizar el valor de el background.
+						// internamente la funcion setimagewithbackgorund llama a la funcion set image.
+						if (cell.getBackground()==null) {
+							timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null)));
+							timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image)));
+						}
+						else{
+							timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImageWithBackground(finalI, finalJ, null,cell.getBackground())));
+							timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImageWithBackground(finalI, finalJ, image,cell.getBackground())));
+
+						}
 					}
 					frameTime = frameTime.add(frameGap);
 				}

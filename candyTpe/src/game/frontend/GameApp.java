@@ -1,5 +1,6 @@
 package game.frontend;
 
+import game.backend.level.Level2;
 import game.backend.CandyGame;
 import game.backend.level.Level1;
 import javafx.application.Application;
@@ -42,6 +43,7 @@ public class GameApp extends Application {
 	}
 
 	public void Level2(ActionEvent actionEvent) {
+		selectLevel(Level2.class);
 	}
 
 	public void Level3(ActionEvent actionEvent) {
