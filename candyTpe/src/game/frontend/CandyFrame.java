@@ -49,7 +49,7 @@ public class CandyFrame extends VBox {
 						// cambio en el codigo, esto nos permite actualizar el valor de el background.
 						// mandamos la celda para que la funcion tenga informacion sobre que color mostrar.
 						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null,null)));
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image,cell)));
+						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image,cell.getBackground())));
 
 					}
 					frameTime = frameTime.add(frameGap);

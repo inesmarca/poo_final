@@ -57,6 +57,7 @@ public class Level2 extends Level1 {
         Level2State(int maxMoves) {
             this.maxMoves = maxMoves;
             this.golden_remaining=SIZE*SIZE;
+
         }
 
         public boolean gameOver() {

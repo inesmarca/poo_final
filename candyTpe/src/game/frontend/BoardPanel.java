@@ -27,11 +27,11 @@ public class BoardPanel extends TilePane {
 		}
 	}
 
-	public void setImage(int row, int column, Image image, Cell cell) {
+	public void setImage(int row, int column, Image image, Color color) {
 
-		if (cell!=null && cell.getBackground()!=null){
+		if (color!=null){
 			Light.Distant spotlight = new Light.Distant();
-			spotlight.setColor(cell.getBackground());
+			spotlight.setColor(color);
 			spotlight.setElevation(100);
 			Lighting lighting = new Lighting(spotlight);
 			cells[row][column].setEffect(lighting);
