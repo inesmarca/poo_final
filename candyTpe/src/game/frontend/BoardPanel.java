@@ -1,11 +1,9 @@
 package game.frontend;
 
-import game.backend.cell.Cell;
 import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 
@@ -38,9 +36,6 @@ public class BoardPanel extends TilePane {
 		}
 
         cells[row][column].setImage(image);
-
-
 	}
-
 
 }

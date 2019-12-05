@@ -62,4 +62,7 @@ public class CandyGame implements GameListener {
 		//
 	}
 
+	public Class<?> getLevel() {
+		return levelClass;
+	}
 }

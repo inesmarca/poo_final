@@ -8,10 +8,6 @@ import javafx.scene.paint.Color;
 
 public class Level2 extends Level1 {
 
-
-
-
-
     @Override
     protected GameState newState() {
         return new Level2State(MAX_MOVES);
@@ -19,35 +15,36 @@ public class Level2 extends Level1 {
 
     @Override
     public boolean tryMove(int i1, int j1, int i2, int j2) {
-        boolean ret;
-        if (ret = super.tryMove(i1, j1, i2, j2)) {
-            state().addMove();
-        }
-        // checks the background color, if its null changes it to golden.
-        if (ret){
-            //if the row is the same
-            if (i1-i2==0){
-                for (int j = 0; j <SIZE ; j++) {
-                    Level2State state = (Level2State) state();
-                    if (super.g()[i2][j].getBackground()==null){
-                        super.g()[i2][j].setBackground(Color.YELLOW);
-                        state.decreaseGoldenRemaining();
+        boolean aux = super.tryMove(i1, j1, i2, j2);
+        // Si el movimiento es valido luego chequea el color de fondo de las posiciones
+        int removeAmount = 0;
+        Level2State state = (Level2State) state();
+        if (aux){
+            // si el movimiento es horizontal
+            if (horizontalMove(i1, i2)){
+                for (int k = 0; k <SIZE ; k++) {
+                    if (super.g()[i2][k].getBackground()==null){
+                        super.g()[i2][k].setBackground(Color.YELLOW);
+                        removeAmount++;
                     }
                 }
             }
             // if the column is the same
             else {
-                for (int i = 0; i < SIZE; i++) {
-                    Level2State state = (Level2State) state();
-                    if (super.g()[i][j1].getBackground()==null){
-                        super.g()[i][j1].setBackground(Color.YELLOW);
-                        state.decreaseGoldenRemaining();
+                for (int k = 0; k < SIZE; k++) {
+                    if (super.g()[k][j1].getBackground()==null){
+                        super.g()[k][j1].setBackground(Color.YELLOW);
+                        removeAmount++;
                     }
                 }
             }
-
         }
-        return ret;
+        state.decreaseGoldenRemaining(removeAmount);
+        return aux;
+    }
+
+    public boolean horizontalMove(int i1, int i2) {
+        return i1 - i2 == 0;
     }
 
     private static class Level2State extends GameState {
@@ -68,9 +65,8 @@ public class Level2 extends Level1 {
             return golden_remaining==0;
         }
 
-        void decreaseGoldenRemaining(){
-        golden_remaining--;
-
+        void decreaseGoldenRemaining(int amount){
+            golden_remaining -= amount;
         }
     }
 }

@@ -29,7 +29,7 @@ public class CandyFrame extends VBox {
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
 		getChildren().add(boardPanel);
-		scorePanel = new ScorePanel();
+		scorePanel = new ScorePanel(game.getLevel());
 		getChildren().add(scorePanel);
 		game.initGame();
 		GameListener listener;
@@ -46,10 +46,11 @@ public class CandyFrame extends VBox {
 						Cell cell = CandyFrame.this.game.get(i, j);
 						Element element = cell.getContent();
 						Image image = images.getImage(element);
-						// cambio en el codigo, esto nos permite actualizar el valor de el background.
-						// mandamos la celda para que la funcion tenga informacion sobre que color mostrar.
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null,null)));
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image,cell.getBackground())));
+						/** cambio en el codigo, esto nos permite actualizar el valor de el background.
+						 * mandamos la celda para que la funcion tenga informacion sobre que color mostrar.
+						 */
+						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null, null)));
+						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, cell.getBackground())));
 
 					}
 					frameTime = frameTime.add(frameGap);

@@ -1,8 +1,8 @@
 package game.frontend;
 
-import game.backend.level.Level2;
 import game.backend.CandyGame;
 import game.backend.level.Level1;
+import game.backend.level.Level2;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.logging.Level;
 
 public class GameApp extends Application {
 
@@ -41,13 +40,12 @@ public class GameApp extends Application {
 
 	public void Level1(ActionEvent actionEvent) {
 		selectLevel(Level1.class);
-        Stage.getWindows().get(0).hide();
+        //Stage.getWindows().get(0).hide();
 	}
 
 	public void Level2(ActionEvent actionEvent){
 		selectLevel(Level2.class);
-		Stage.getWindows().get(0).hide();
-
+		//Stage.getWindows().get(0).hide();
 	}
 
 	public void Level3(ActionEvent actionEvent) {
