@@ -3,6 +3,7 @@ package game.frontend;
 import game.backend.CandyGame;
 import game.backend.level.Level1;
 import game.backend.level.Level2;
+import game.backend.level.Level3;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +26,7 @@ public class GameApp extends Application {
 		primaryStage.setScene(new Scene(root, 500, 600));
 		primaryStage.show();
 
-		/**
+		/*
 		 CandyGame game = new CandyGame(Level1.class);
 		 CandyFrame frame = new CandyFrame(game);
 		 Scene scene = new Scene(frame);
@@ -49,6 +50,7 @@ public class GameApp extends Application {
 	}
 
 	public void Level3(ActionEvent actionEvent) {
+		selectLevel(Level3.class);
 	}
 
 	public void selectLevel(Class<?> level) {

@@ -5,19 +5,19 @@ import java.util.Objects;
 public class TimedCandy extends Candy {
 
     private int time_left;
-
+//los constructores son necesarios porque en los enum y como en el image manager, utiliza este formato.
+    public TimedCandy(){}
+    public TimedCandy(CandyColor color){super(color);}
     public TimedCandy(CandyColor color, int Time){
         super(color);
         this.time_left=Time;
-
-
     }
 
     public int getTimer() {
         return time_left;
     }
     public void decreaseTimer(){
-        time_left--;
+        if (time_left>0) {time_left--;}
     }
     @Override
     public String getKey(){

@@ -50,10 +50,9 @@ public class CandyFrame extends VBox {
 						Cell cell = CandyFrame.this.game.get(i, j);
 						Element element = cell.getContent();
 						Image image = images.getImage(element);
-						/** cambio en el codigo, esto nos permite actualizar el valor de el background.
-						 * mandamos la celda para que la funcion tenga informacion sobre que color mostrar.
+						/* cambio en el codigo, esto nos permite actualizar el valor de el background.
+						  mandamos la celda para que la funcion tenga informacion sobre que color mostrar.
 						 */
-                        Color background=cell.getBackground();
 
                         // este codigo pregunta al tipe element si es que tiene algun mensaje para mostrar.
 						// de ser asi, tomamos el mensaje y lo mandamos al set image para actualizar la pantalla.
@@ -63,7 +62,7 @@ public class CandyFrame extends VBox {
 						}
                         else displaytext=null;
 						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null, null,null)));
-                        timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, background,displaytext)));
+                        timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, cell.getBackground(),displaytext)));
 
 
 
