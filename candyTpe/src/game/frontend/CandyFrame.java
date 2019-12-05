@@ -5,13 +5,17 @@ import game.backend.GameListener;
 import game.backend.cell.Cell;
 import game.backend.element.Element;
 
+import game.backend.element.TimedCandy;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
+
+import java.awt.*;
 
 public class CandyFrame extends VBox {
 
@@ -49,8 +53,22 @@ public class CandyFrame extends VBox {
 						/** cambio en el codigo, esto nos permite actualizar el valor de el background.
 						 * mandamos la celda para que la funcion tenga informacion sobre que color mostrar.
 						 */
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null, null)));
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, cell.getBackground())));
+                        Color background=cell.getBackground();
+
+                        // este codigo pregunta al tipe element si es que tiene algun mensaje para mostrar.
+						// de ser asi, tomamos el mensaje y lo mandamos al set image para actualizar la pantalla.
+                        String displaytext;
+                        if (cell.getContent().DisplayableText()) {
+							displaytext= cell.getContent().DisplayText();
+						}
+                        else displaytext=null;
+						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null, null,null)));
+                        timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, background,displaytext)));
+
+
+
+
+
 
 					}
 					frameTime = frameTime.add(frameGap);
