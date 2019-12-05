@@ -8,29 +8,30 @@ import javafx.scene.layout.BorderPane;
 public class ScorePanel extends BorderPane {
 
 	private Label scoreLabel;
-	private Label secondLabel;
-	private Label secondPoints;
-	private Class<?> level;
+	private Label secondScore;
 
-	public ScorePanel(Class<?> level) {
+	public ScorePanel() {
 		setStyle("-fx-background-color: #5490ff");
 		scoreLabel = new Label("0");
 		/**
 		 *
 		 */
-		this.level = level;
+		secondScore = new Label("-1");
 		/**
 		 *
 		 */
 		scoreLabel.setAlignment(Pos.CENTER);
 		scoreLabel.setStyle("-fx-font-size: 24");
-		setCenter(scoreLabel);
+		secondScore.setStyle("-fx-font-size: 24");
+		setLeft(scoreLabel);
+		setRight(secondScore);
 	}
 	
 	public void updateScore(String text) {
 		scoreLabel.setText(text);
 	}
 
-	public void updateGolden(String text) {
+	public void updateSecondScore(String text) {
+		secondScore.setText(text);
 	}
 }

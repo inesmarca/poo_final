@@ -29,7 +29,7 @@ public class CandyFrame extends VBox {
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
 		getChildren().add(boardPanel);
-		scorePanel = new ScorePanel(game.getLevel());
+		scorePanel = new ScorePanel();
 		getChildren().add(scorePanel);
 		game.initGame();
 		GameListener listener;
@@ -84,7 +84,9 @@ public class CandyFrame extends VBox {
 							message = message + " Finished - Loser !";
 						}
 					}
+					String secondScore = ((Long)game().getSecondScore()).toString();
 					scorePanel.updateScore(message);
+					scorePanel.updateSecondScore(secondScore);
 					lastPoint = null;
 				}
 			}

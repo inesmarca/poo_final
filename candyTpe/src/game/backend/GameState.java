@@ -4,6 +4,7 @@ public abstract class GameState {
 	
 	private long score = 0;
 	private int moves = 0;
+	private int secondScore;
 	
 	public void addScore(long value) {
 		this.score = this.score + value;
@@ -12,6 +13,9 @@ public abstract class GameState {
 	public long getScore(){
 		return score;
 	}
+
+	// retorna el segundo score
+	public long getSecondScore() { return secondScore; }
 	
 	public void addMove() {
 		moves++;

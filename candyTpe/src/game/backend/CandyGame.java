@@ -43,6 +43,8 @@ public class CandyGame implements GameListener {
 	public long getScore() {
 		return state.getScore();
 	}
+
+	public long getSecondScore() { return state.getSecondScore(); }
 	
 	public boolean isFinished() {
 		return state.gameOver();
@@ -60,9 +62,5 @@ public class CandyGame implements GameListener {
 	@Override
 	public void gridUpdated() {
 		//
-	}
-
-	public Class<?> getLevel() {
-		return levelClass;
 	}
 }

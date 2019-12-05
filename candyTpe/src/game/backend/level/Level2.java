@@ -2,11 +2,15 @@ package game.backend.level;
 
 import game.backend.GameState;
 
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
 
 
-public class Level2 extends Level1 {
+public class Level2 extends Levels {
+
+    static int MAX_MOVES = 20;
+    static String SECOND_SCORE = "Golden Remaining: ";
 
     @Override
     protected GameState newState() {
@@ -49,11 +53,11 @@ public class Level2 extends Level1 {
 
     private static class Level2State extends GameState {
         private long maxMoves;
-        private int golden_remaining;
+        private int secondScore;
 
         Level2State(int maxMoves) {
             this.maxMoves = maxMoves;
-            this.golden_remaining=SIZE*SIZE;
+            this.secondScore=SIZE*SIZE;
 
         }
 
@@ -62,11 +66,14 @@ public class Level2 extends Level1 {
         }
 
         public boolean playerWon() {
-            return golden_remaining==0;
+            return secondScore == 0;
         }
 
+        // Retorna el el segundo score
+        public long getSecondScore() { return secondScore; }
+
         void decreaseGoldenRemaining(int amount){
-            golden_remaining -= amount;
+            secondScore -= amount;
         }
     }
 }
