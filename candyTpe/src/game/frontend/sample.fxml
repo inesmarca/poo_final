@@ -5,38 +5,42 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: #D3E9FF;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.frontend.GameApp">
-    <children>
-        <Pane layoutX="72.0" layoutY="90.0" prefHeight="291.0" prefWidth="356.0">
-            <children>
-                <Button id="level1" layoutX="131.0" layoutY="106.0" mnemonicParsing="false" onAction="#Level1" style="-fx-background-color: #E5449E;" text="Level 1" textFill="#fefeff">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                    <effect>
-                        <Glow />
-                    </effect></Button>
-                <Button id="level2" layoutX="130.0" layoutY="163.0" mnemonicParsing="false" onAction="#Level2" style="-fx-background-color: #E5449E;" text="Level 2" textFill="#fffefe">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                    <effect>
-                        <Glow />
-                    </effect></Button>
-                <Button id="level3" layoutX="129.0" layoutY="219.0" mnemonicParsing="false" onAction="#Level3" style="-fx-background-color: #E5449E;" text="Level 3" textFill="#fcf8f8">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                    <effect>
-                        <Glow />
-                    </effect>
-                </Button>
-                <Label id="title" layoutX="39.0" layoutY="8.0" prefHeight="82.0" prefWidth="279.0" text="Candy Crush" textAlignment="CENTER" textFill="#ffae00">
-                    <font>
-                        <Font name="Brush Script MT Italic" size="60.0" />
-                    </font>
-                </Label>
-            </children>
-        </Pane>
-    </children>
+<AnchorPane prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: #D3E9FF;"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="game.frontend.Controller">
+    <Pane layoutX="72.0" layoutY="90.0" prefHeight="291.0" prefWidth="356.0">
+        <Button id="level1" layoutX="131.0" layoutY="106.0" mnemonicParsing="false" onAction="#Level1"
+                style="-fx-background-color: #E5449E;" text="Level 1" textFill="#fefeff">
+            <font>
+                <Font size="20.0"/>
+            </font>
+            <effect>
+                <Glow/>
+            </effect>
+        </Button>
+        <Button id="level2" layoutX="130.0" layoutY="163.0" mnemonicParsing="false" onAction="#Level2"
+                style="-fx-background-color: #E5449E;" text="Level 2" textFill="#fffefe">
+            <font>
+                <Font size="20.0"/>
+            </font>
+            <effect>
+                <Glow/>
+            </effect>
+        </Button>
+        <Button id="level3" layoutX="129.0" layoutY="219.0" mnemonicParsing="false" onAction="#Level3"
+                style="-fx-background-color: #E5449E;" text="Level 3" textFill="#fcf8f8">
+            <font>
+                <Font size="20.0"/>
+            </font>
+            <effect>
+                <Glow/>
+            </effect>
+        </Button>
+        <Label id="title" layoutX="39.0" layoutY="8.0" prefHeight="82.0" prefWidth="279.0" text="Candy Crush"
+               textAlignment="CENTER" textFill="#ffae00">
+            <font>
+                <Font name="Brush Script MT Italic" size="60.0"/>
+            </font>
+        </Label>
+    </Pane>
 </AnchorPane>

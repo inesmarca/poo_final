@@ -8,11 +8,17 @@ import game.backend.element.Element;
 import game.backend.element.TimedCandy;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Menu;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.awt.*;
@@ -27,9 +33,9 @@ public class CandyFrame extends VBox {
 	private Point2D lastPoint;
 	private CandyGame game;
 
-	public CandyFrame(CandyGame game) {
+	public CandyFrame(CandyGame game, Stage window, Scene rootScene) {
 		this.game = game;
-		getChildren().add(new AppMenu());
+		getChildren().add(new AppMenu(window, rootScene));
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
 		getChildren().add(boardPanel);
