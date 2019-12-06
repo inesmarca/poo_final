@@ -70,7 +70,7 @@ public class Level2 extends Levels {
         }
 
         // Retorna el el segundo score
-        public long getSecondScore() { return secondScore; }
+        public String getSecondScore() { return ((Long)secondScore).toString(); }
 
         void decreaseGoldenRemaining(int amount){
             secondScore -= amount;

@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class TimedCandy extends Candy {
 
-    private int time_left;
+    private int time_left = 10;
 //los constructores son necesarios porque en los enum y como en el image manager, utiliza este formato.
     public TimedCandy(){}
     public TimedCandy(CandyColor color){super(color);}
-    public TimedCandy(CandyColor color, int Time){
+    public TimedCandy(CandyColor color, int Time) {
         super(color);
         this.time_left=Time;
     }

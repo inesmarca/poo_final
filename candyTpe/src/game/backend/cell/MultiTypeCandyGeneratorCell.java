@@ -9,7 +9,7 @@ import game.backend.element.TimedCandy;
 import java.util.List;
 
 public class MultiTypeCandyGeneratorCell extends CandyGeneratorCell {
-    private int BOMB_CHANCE=93;
+    private int BOMB_CHANCE = 100;
     private int fuse;
 
     public MultiTypeCandyGeneratorCell(Grid grid, int fuse) {
@@ -22,7 +22,7 @@ public class MultiTypeCandyGeneratorCell extends CandyGeneratorCell {
         int i = (int)(Math.random() * CandyColor.values().length);
         int j = (int)(Math.random()*100);
 
-        if (j>BOMB_CHANCE){
+        if (j > BOMB_CHANCE) {
 
             return new TimedCandy(CandyColor.values()[i],fuse);
         }

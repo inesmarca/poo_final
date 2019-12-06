@@ -100,7 +100,7 @@ public class CandyFrame extends VBox {
 						}
 					}
 					scorePanel.updateScore(message);
-					String secondScore = ((Long)game().getSecondScore()).toString();
+					String secondScore = game().getSecondScore();
 					scorePanel.updateSecondScore(secondScore);
 
 					lastPoint = null;

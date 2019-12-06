@@ -22,18 +22,12 @@ public class Level3 extends Levels {
     @Override
     // se sobreescribe este metodo para poder usar un generador de candy que incluya otros tipos de candy(Timed candy en este caso)
     protected void CreateCandyGenCell() {
-        this.candyGenCell= new MultiTypeCandyGeneratorCell(this,BOMB_FUSE);
+        this.candyGenCell= new MultiTypeCandyGeneratorCell(this, BOMB_FUSE);
     }
 
     @Override
     public boolean tryMove(int i1, int j1, int i2, int j2) {
         boolean aux = super.tryMove(i1, j1, i2, j2);
-
-         // recorre el tablero entero y busca la bomba con el fusible mas corto;
-        // si la encuentra guarda la cantidad restante de turnos en la variable shortest_fuse
-        // si no la encuentra, cambia la variable bombs_present.
-        // si encunetra una bomba explotada, llama a la funcion explode que establece la condicion de perder la partida.
-
 
         // En esta parte solo decrementa el valor de las bombas
         if (aux) {
@@ -51,12 +45,14 @@ public class Level3 extends Levels {
     }
 
     // Esta funcion esta hecha para encontrar cual es la bomba con menor valor
-    public int getShortestFuse() {
+    public Integer getShortestFuse() {
         int shortest_fuse = BOMB_FUSE + 1;
+        boolean bomb_present = false;
 
         for (int i = 0; i <SIZE ; i++) {
             for (int j = 0; j <SIZE ; j++) {
                 if (g()[i][j].getContent().getKey().equals(new TimedCandy().getKey())){
+                    bomb_present = true;
                     TimedCandy timedCandy =(TimedCandy) g()[i][j].getContent();
                     if (shortest_fuse>timedCandy.getTimer()){
                         shortest_fuse=timedCandy.getTimer();
@@ -65,35 +61,32 @@ public class Level3 extends Levels {
 
             }
         }
+        if (bomb_present == false) {
+            return null;
+        }
         return shortest_fuse;
     }
 
     private class Level3State extends GameState {
         private long requiredScore;
         private long maxMoves;
-        private boolean bomb_exploded;
-        private int shortest_fuse;
-        private boolean bombs_present;
 
         private Level3State(long requiredScore, int maxMoves) {
             this.requiredScore = requiredScore;
             this.maxMoves = maxMoves;
-            this.bomb_exploded=false;
-
         }
 
-        private void Exploded(){
-            bomb_exploded=true;
+        public boolean bombExploded() {
+            Integer value = getShortestFuse();
+            if (value == null || value != 0) {
+                return false;
+            }
+            return true;
         }
-
-        public int getShortest_fuse(){
-            return shortest_fuse;
-        }
-
 
         @Override
         public boolean gameOver() {
-            return getShortestFuse() == 0 || getMoves() >= maxMoves;
+            return bombExploded() || getMoves() >= maxMoves;
         }
 
         @Override
@@ -102,6 +95,11 @@ public class Level3 extends Levels {
         }
 
         // Retorna el el segundo score
-        public long getSecondScore() { return getShortestFuse(); }
+        public String getSecondScore() {
+            if (getShortestFuse() == null) {
+                return "No bombs";
+            }
+            return getShortestFuse().toString();
+        }
     }
 }
