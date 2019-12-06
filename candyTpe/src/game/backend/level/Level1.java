@@ -4,19 +4,24 @@ import game.backend.GameState;
 
 public class Level1 extends Levels {
 	
-	static int REQUIRED_SCORE = 5000;
-	static int MAX_MOVES = 20;
-	
+	private static int REQUIRED_SCORE = 5000;
+	private static int MAX_MOVES = 20;
+
+	@Override
+	public String getLevel_name() {
+		return "Level 1";
+	}
+
 	@Override
 	protected GameState newState() {
 		return new Level1State(REQUIRED_SCORE, MAX_MOVES);
 	}
 	
-	private class Level1State extends GameState {
+	private static class Level1State extends GameState {
 		private long requiredScore;
 		private long maxMoves;
 		
-		public Level1State(long requiredScore, int maxMoves) {
+		Level1State(long requiredScore, int maxMoves) {
 			this.requiredScore = requiredScore;
 			this.maxMoves = maxMoves;
 		}

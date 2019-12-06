@@ -1,16 +1,19 @@
 package game.backend.level;
 
 import game.backend.GameState;
-
-import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
 
 
 public class Level2 extends Levels {
 
-    static int MAX_MOVES = 20;
-    static long INITIAL_VALUE = SIZE * SIZE;
+    private static int MAX_MOVES = 20;
+    private static long INITIAL_VALUE = SIZE * SIZE;
+
+    @Override
+    public String getLevel_name() {
+        return "Level 2";
+    }
 
     @Override
     protected GameState newState() {
@@ -47,7 +50,7 @@ public class Level2 extends Levels {
         return aux;
     }
 
-    public boolean horizontalMove(int i1, int i2) {
+    private boolean horizontalMove(int i1, int i2) {
         return i1 - i2 == 0;
     }
 

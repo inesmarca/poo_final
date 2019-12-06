@@ -4,6 +4,7 @@ import game.backend.CandyGame;
 import game.backend.level.Level1;
 import game.backend.level.Level2;
 import game.backend.level.Level3;
+import game.backend.level.Levels;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -39,7 +40,7 @@ public class GameApp extends Application {
 	}
 
 
-	public void Level1(ActionEvent actionEvent) {
+	public void Level1(ActionEvent actionEvent)  {
 		selectLevel(Level1.class);
         //Stage.getWindows().get(0).hide();
 	}
@@ -53,14 +54,14 @@ public class GameApp extends Application {
 		selectLevel(Level3.class);
 	}
 
-	public void selectLevel(Class<?> level) {
+	public void selectLevel(Class<? extends Levels> level)  {
 		Stage secondStage = new Stage();
 		CandyGame game = new CandyGame(level);
 		CandyFrame frame = new CandyFrame(game);
 		Scene scene = new Scene(frame);
 		secondStage.setResizable(false);
 		secondStage.setScene(scene);
-		secondStage.setTitle("Level "+level.toString().charAt(level.toString().length()-1));
+		secondStage.setTitle(game.getLevel());
 		secondStage.show();
 	}
 

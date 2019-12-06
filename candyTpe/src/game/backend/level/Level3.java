@@ -2,17 +2,18 @@ package game.backend.level;
 
 import game.backend.GameState;
 import game.backend.cell.MultiTypeCandyGeneratorCell;
-import game.backend.element.Candy;
 import game.backend.element.TimedCandy;
-import javafx.scene.paint.Color;
-
-import java.util.Map;
 
 public class Level3 extends Levels {
     private static int BOMB_FUSE=10;
     private static int REQUIRED_SCORE = 5000;
     private static int MAX_MOVES = 20;
 
+
+    @Override
+    public String getLevel_name() {
+        return "Level 3";
+    }
 
     @Override
     protected GameState newState() {
@@ -61,7 +62,7 @@ public class Level3 extends Levels {
 
             }
         }
-        if (bomb_present == false) {
+        if (!bomb_present) {
             return null;
         }
         return shortest_fuse;
@@ -76,12 +77,9 @@ public class Level3 extends Levels {
             this.maxMoves = maxMoves;
         }
 
-        public boolean bombExploded() {
+        boolean bombExploded() {
             Integer value = getShortestFuse();
-            if (value == null || value != 0) {
-                return false;
-            }
-            return true;
+            return value != null && value == 0;
         }
 
         @Override
@@ -101,5 +99,6 @@ public class Level3 extends Levels {
             }
             return getShortestFuse().toString();
         }
+
     }
 }
