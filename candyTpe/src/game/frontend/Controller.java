@@ -1,11 +1,11 @@
 package game.frontend;
 
 import game.backend.CandyGame;
+import game.backend.level.Level1;
 import game.backend.level.Level2;
 import game.backend.level.Level3;
 import game.backend.level.Levels;
 import javafx.event.ActionEvent;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -23,7 +23,7 @@ public class Controller {
     }
 
     public void Level1(ActionEvent actionEvent) {
-        selectLevel(Level2.class);
+        selectLevel(Level1.class);
         //Stage.getWindows().get(0).hide();
     }
 
@@ -36,8 +36,8 @@ public class Controller {
         selectLevel(Level3.class);
     }
 
-    public void selectLevel(Class<?> level) {
-        CandyGame game = new CandyGame((Class<? extends Levels>) level);
+    public void selectLevel( Class<? extends Levels> level) {
+        CandyGame game = new CandyGame( level);
         CandyFrame frame = new CandyFrame(game, window, rootScene);
         Scene scene = new Scene(frame);
         window.setScene(scene);
