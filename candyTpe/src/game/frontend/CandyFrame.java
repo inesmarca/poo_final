@@ -4,24 +4,15 @@ import game.backend.CandyGame;
 import game.backend.GameListener;
 import game.backend.cell.Cell;
 import game.backend.element.Element;
-
-import game.backend.element.TimedCandy;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.awt.*;
 
 public class CandyFrame extends VBox {
 
@@ -76,7 +67,7 @@ public class CandyFrame extends VBox {
 				}
 				timeLine.play();
 
-				// Movi el update del secondScore a esta parte para que ya tome un valor inicial apropiado
+
 
 			}
 			@Override
