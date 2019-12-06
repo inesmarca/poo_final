@@ -74,6 +74,9 @@ public class CandyFrame extends VBox {
 				}
 				timeLine.play();
 
+				// Movi el update del secondScore a esta parte para que ya tome un valor inicial apropiado
+				String secondScore = ((Long)game().getSecondScore()).toString();
+				scorePanel.updateSecondScore(secondScore);
 			}
 			@Override
 			public void cellExplosion(Element e) {
@@ -101,9 +104,7 @@ public class CandyFrame extends VBox {
 							message = message + " Finished - Loser !";
 						}
 					}
-					String secondScore = ((Long)game().getSecondScore()).toString();
 					scorePanel.updateScore(message);
-					scorePanel.updateSecondScore(secondScore);
 					lastPoint = null;
 				}
 			}

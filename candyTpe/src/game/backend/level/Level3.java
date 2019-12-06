@@ -19,6 +19,55 @@ public class Level3 extends Levels {
         return new Level3.Level3State(REQUIRED_SCORE, MAX_MOVES);
     }
 
+    @Override
+    // se sobreescribe este metodo para poder usar un generador de candy que incluya otros tipos de candy(Timed candy en este caso)
+    protected void CreateCandyGenCell() {
+        this.candyGenCell= new MultiTypeCandyGeneratorCell(this,BOMB_FUSE);
+    }
+
+    @Override
+    public boolean tryMove(int i1, int j1, int i2, int j2) {
+        boolean aux = super.tryMove(i1, j1, i2, j2);
+
+         // recorre el tablero entero y busca la bomba con el fusible mas corto;
+        // si la encuentra guarda la cantidad restante de turnos en la variable shortest_fuse
+        // si no la encuentra, cambia la variable bombs_present.
+        // si encunetra una bomba explotada, llama a la funcion explode que establece la condicion de perder la partida.
+
+
+        // En esta parte solo decrementa el valor de las bombas
+        if (aux) {
+            for (int i = 0; i < SIZE; i++) {
+                for (int j = 0; j < SIZE; j++) {
+                    if (g()[i][j].getContent().getKey().equals(new TimedCandy().getKey())) {
+                        TimedCandy timedCandy = (TimedCandy) g()[i][j].getContent();
+                        timedCandy.decreaseTimer();
+                    }
+                }
+            }
+        }
+
+        return aux;
+    }
+
+    // Esta funcion esta hecha para encontrar cual es la bomba con menor valor
+    public int getShortestFuse() {
+        int shortest_fuse = BOMB_FUSE + 1;
+
+        for (int i = 0; i <SIZE ; i++) {
+            for (int j = 0; j <SIZE ; j++) {
+                if (g()[i][j].getContent().getKey().equals(new TimedCandy().getKey())){
+                    TimedCandy timedCandy =(TimedCandy) g()[i][j].getContent();
+                    if (shortest_fuse>timedCandy.getTimer()){
+                        shortest_fuse=timedCandy.getTimer();
+                    }
+                }
+
+            }
+        }
+        return shortest_fuse;
+    }
+
     private class Level3State extends GameState {
         private long requiredScore;
         private long maxMoves;
@@ -32,9 +81,11 @@ public class Level3 extends Levels {
             this.bomb_exploded=false;
 
         }
+
         private void Exploded(){
             bomb_exploded=true;
         }
+
         public int getShortest_fuse(){
             return shortest_fuse;
         }
@@ -42,7 +93,7 @@ public class Level3 extends Levels {
 
         @Override
         public boolean gameOver() {
-            return !bomb_exploded && (playerWon() || getMoves() >= maxMoves);
+            return getShortestFuse() == 0 || getMoves() >= maxMoves;
         }
 
         @Override
@@ -51,45 +102,6 @@ public class Level3 extends Levels {
         }
 
         // Retorna el el segundo score
-        public long getSecondScore() { return shortest_fuse; }
-    }
-    @Override
-    // se sobreescribe este metodo para poder usar un generador de candy que incluya otros tipos de candy(Timed candy en este caso)
-    protected void CreateCandyGenCell() {
-        this.candyGenCell= new MultiTypeCandyGeneratorCell(this,BOMB_FUSE);
-    }
-    @Override
-    public boolean tryMove(int i1, int j1, int i2, int j2) {
-        boolean aux = super.tryMove(i1, j1, i2, j2);
-
-         // recorre el tablero entero y busca la bomba con el fusible mas corto;
-        // si la encuentra guarda la cantidad restante de turnos en la variable shortest_fuse
-        // si no la encuentra, cambia la variable bombs_present.
-        // si encunetra una bomba explotada, llama a la funcion explode que establece la condicion de perder la partida.
-
-        int shortest_fuse=BOMB_FUSE+1;
-        Level3State state=(Level3State) state();
-        for (int i = 0; i <SIZE ; i++) {
-            for (int j = 0; j <SIZE ; j++) {
-                if (g()[i][j].getContent().getKey().equals(new TimedCandy().getKey())){
-                    TimedCandy timedCandy =(TimedCandy) g()[i][j].getContent();
-                    timedCandy.decreaseTimer();
-                    if (shortest_fuse>timedCandy.getTimer()){
-                        shortest_fuse=timedCandy.getTimer();
-                        state.bombs_present=true;
-                    }
-                }
-
-            }
-        }
-
-        if (shortest_fuse<=0){ state.Exploded(); }
-        if (shortest_fuse==BOMB_FUSE+1){
-            state.bombs_present=false;
-        }
-        state.shortest_fuse=shortest_fuse;
-
-
-        return aux;
+        public long getSecondScore() { return getShortestFuse(); }
     }
 }

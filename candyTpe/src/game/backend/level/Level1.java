@@ -28,8 +28,6 @@ public class Level1 extends Levels {
 		public boolean playerWon() {
 			return getScore() > requiredScore;
 		}
-
-
 	}
 
 }

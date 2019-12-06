@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 public class Level2 extends Levels {
 
     static int MAX_MOVES = 20;
-    static String SECOND_SCORE = "Golden Remaining: ";
+    static long INITIAL_VALUE = SIZE * SIZE;
 
     @Override
     protected GameState newState() {
@@ -53,11 +53,11 @@ public class Level2 extends Levels {
 
     private static class Level2State extends GameState {
         private long maxMoves;
-        private int secondScore;
+        private long secondScore;
 
         Level2State(int maxMoves) {
             this.maxMoves = maxMoves;
-            this.secondScore=SIZE*SIZE;
+            this.secondScore = INITIAL_VALUE;
 
         }
 
