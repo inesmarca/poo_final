@@ -5,13 +5,23 @@ import game.backend.GameListener;
 import game.backend.cell.Cell;
 import game.backend.element.Element;
 
+import game.backend.element.TimedCandy;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Menu;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.awt.*;
 
 public class CandyFrame extends VBox {
 
@@ -23,9 +33,9 @@ public class CandyFrame extends VBox {
 	private Point2D lastPoint;
 	private CandyGame game;
 
-	public CandyFrame(CandyGame game) {
+	public CandyFrame(CandyGame game, Stage window, Scene rootScene) {
 		this.game = game;
-		getChildren().add(new AppMenu());
+		getChildren().add(new AppMenu(window, rootScene));
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
 		getChildren().add(boardPanel);
@@ -46,9 +56,15 @@ public class CandyFrame extends VBox {
 						Cell cell = CandyFrame.this.game.get(i, j);
 						Element element = cell.getContent();
 						Image image = images.getImage(element);
+						/* cambio en el codigo, esto nos permite actualizar el valor de el background.
+						  mandamos la celda para que la funcion tenga informacion sobre que color mostrar.
+						 */
 
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null, null)));
-                        timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, cell.getBackground())));
+                        // este codigo pregunta al tipe element si es que tiene algun mensaje para mostrar.
+						// de ser asi, tomamos el mensaje y lo mandamos al set image para actualizar la pantalla.
+
+						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null, null,null)));
+                        timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, cell.getBackground(),cell.getContent().DisplayText())));
 
 
 
@@ -60,8 +76,8 @@ public class CandyFrame extends VBox {
 				}
 				timeLine.play();
 
-				String secondScore = ((Long)game().getSecondScore()).toString();
-				scorePanel.updateSecondScore(secondScore);
+				// Movi el update del secondScore a esta parte para que ya tome un valor inicial apropiado
+
 			}
 			@Override
 			public void cellExplosion(Element e) {
@@ -90,6 +106,9 @@ public class CandyFrame extends VBox {
 						}
 					}
 					scorePanel.updateScore(message);
+					String secondScore = game().getSecondScore();
+					scorePanel.updateSecondScore(secondScore);
+
 					lastPoint = null;
 				}
 			}

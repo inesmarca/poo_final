@@ -1,14 +1,6 @@
 package game.frontend;
 
-import game.backend.element.Bomb;
-import game.backend.element.Candy;
-import game.backend.element.CandyColor;
-import game.backend.element.Element;
-import game.backend.element.HorizontalStripedCandy;
-import game.backend.element.Nothing;
-import game.backend.element.VerticalStripedCandy;
-import game.backend.element.Wall;
-import game.backend.element.WrappedCandy;
+import game.backend.element.*;
 import javafx.scene.image.Image;
 
 import java.util.HashMap;
@@ -27,8 +19,12 @@ public class ImageManager {
 		images.put(new Nothing().getKey(), new Image(IMAGE_PATH + "nothing.png"));
 		images.put(new Bomb().getKey(),  new Image(IMAGE_PATH + "bomb.png"));
 		images.put(new Wall().getKey(),  new Image(IMAGE_PATH + "wall.png"));
+		// hay que agregar los valores para el nuevo tipo, TimedCandy.
+		//pero comparte gran parte de su funcionalidad con Candy,
+		//entonces practicamente cada vez que se modifica un type candy, lo mismo ocurriria con type TimedCandy
 		for (CandyColor cc: CandyColor.values()) {
 			images.put(new Candy(cc).getFullKey(),   new Image(IMAGE_PATH + cc.toString().toLowerCase() + "Candy.png"));
+			images.put(new TimedCandy(cc).getFullKey(),   new Image(IMAGE_PATH + cc.toString().toLowerCase() + "Candy.png"));
 		}
 		for (CandyColor cc: CandyColor.values()) {
 			wc.setColor(cc);

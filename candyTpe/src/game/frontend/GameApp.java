@@ -1,9 +1,9 @@
 package game.frontend;
 
-
 import game.backend.CandyGame;
 import game.backend.level.Level1;
 import game.backend.level.Level2;
+import game.backend.level.Level3;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -14,53 +14,27 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class GameApp extends Application {
+	Stage window;
+	Scene scene1;
 
 	public static void main(String[] args) {
 		launch(args);
 	}
 
 	public void start(Stage primaryStage) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-		primaryStage.setTitle("Candy Crush");
-		primaryStage.setResizable(false);
-		primaryStage.setScene(new Scene(root, 500, 600));
-		primaryStage.show();
+		this.window = primaryStage;
 
-		/**
-		 CandyGame game = new CandyGame(Level1.class);
-		 CandyFrame frame = new CandyFrame(game);
-		 Scene scene = new Scene(frame);
-		 primaryStage.setResizable(false);
-		 primaryStage.setScene(scene);
-		 primaryStage.show();
-		 */
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("sample.fxml"));
+		Parent root = loader.load();
 
+		scene1 = new Scene(root, 500, 600);
+		((Controller) loader.getController()).setPrimaryStage(window).setRootScene(scene1);
+
+		window.setTitle("Candy Crush");
+		window.setResizable(false);
+		window.setScene(scene1);
+		window.show();
 
 	}
-
-
-	public void Level1(ActionEvent actionEvent) {
-		selectLevel(Level1.class);
-        //Stage.getWindows().get(0).hide();
-	}
-
-	public void Level2(ActionEvent actionEvent){
-		selectLevel(Level2.class);
-		//Stage.getWindows().get(0).hide();
-	}
-
-	public void Level3(ActionEvent actionEvent) {
-	}
-
-	public void selectLevel(Class<?> level) {
-		Stage secondStage = new Stage();
-		CandyGame game = new CandyGame(level);
-		CandyFrame frame = new CandyFrame(game);
-		Scene scene = new Scene(frame);
-		secondStage.setResizable(false);
-		secondStage.setScene(scene);
-		secondStage.setTitle("Level "+level.toString().charAt(level.toString().length()-1));
-		secondStage.show();
-	}
-
 }

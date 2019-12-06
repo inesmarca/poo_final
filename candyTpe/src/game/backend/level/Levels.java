@@ -6,9 +6,14 @@ import game.backend.cell.CandyGeneratorCell;
 import game.backend.cell.Cell;
 import game.backend.element.Wall;
 
-public class Levels extends Grid {
+public abstract class Levels extends Grid {
     private Cell wallCell;
-    private Cell candyGenCell;
+    Cell candyGenCell;
+
+
+    protected void CreateCandyGenCell() {
+        this.candyGenCell= new CandyGeneratorCell(this);
+    }
 
     @Override
     protected GameState newState() {
@@ -17,9 +22,11 @@ public class Levels extends Grid {
 
     @Override
     protected void fillCells() {
+        CreateCandyGenCell();
         wallCell = new Cell(this);
         wallCell.setContent(new Wall());
-        candyGenCell = new CandyGeneratorCell(this);
+
+
 
         //corners
         g()[0][0].setAround(candyGenCell, g()[1][0], wallCell, g()[0][1]);
@@ -59,4 +66,10 @@ public class Levels extends Grid {
         }
         return ret;
     }
+
+    public String getLevel_name() {
+        return null;
+    }
+
+
 }

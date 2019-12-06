@@ -3,7 +3,8 @@ package game.backend.element;
 import game.backend.move.Direction;
 
 public abstract class Element {
-	
+
+
 	public abstract boolean isMovable();
 	
 	public abstract String getKey();
@@ -23,5 +24,11 @@ public abstract class Element {
 	public long getScore() {
 		return 0;
 	}
+
+	public boolean DisplayableText(){
+		return false;
+	}
+
+	public String DisplayText(){return null;}
 	
 }

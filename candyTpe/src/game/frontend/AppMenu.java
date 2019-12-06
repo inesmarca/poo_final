@@ -1,14 +1,21 @@
 package game.frontend;
 
 import javafx.application.Platform;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.util.Optional;
 
 public class AppMenu extends MenuBar {
 
-    public AppMenu() {
+    public AppMenu(Stage window, Scene rootScene) {
         Menu file = new Menu("Archivo");
+        MenuItem back = new MenuItem("Atras");
+        back.setOnAction(event -> {
+            window.setScene(rootScene);
+        });
         MenuItem exitMenuItem = new MenuItem("Salir");
         exitMenuItem.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -22,7 +29,7 @@ public class AppMenu extends MenuBar {
                 }
             }
         });
-        file.getItems().add(exitMenuItem);
+        file.getItems().addAll(back, exitMenuItem);
         Menu help = new Menu("Ayuda");
         MenuItem aboutMenuItem = new MenuItem("Acerca De");
         aboutMenuItem.setOnAction(event -> {
