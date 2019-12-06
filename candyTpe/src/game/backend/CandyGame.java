@@ -58,6 +58,9 @@ public class CandyGame implements GameListener {
 	public boolean playerWon() {
 		return state.playerWon();
 	}
+
+	//
+	public Integer getInitialValue() { return state.getInitialValue(); }
 	
 	@Override
 	public void cellExplosion(Element e) {

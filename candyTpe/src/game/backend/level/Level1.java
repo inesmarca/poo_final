@@ -6,6 +6,7 @@ public class Level1 extends Levels {
 	
 	private static int REQUIRED_SCORE = 5000;
 	private static int MAX_MOVES = 20;
+	private static Integer INITIAL_VALUE = null;
 
 	@Override
 	public String getLevel_name() {
@@ -24,6 +25,7 @@ public class Level1 extends Levels {
 		Level1State(long requiredScore, int maxMoves) {
 			this.requiredScore = requiredScore;
 			this.maxMoves = maxMoves;
+			this.initialValue = INITIAL_VALUE;
 		}
 		
 		public boolean gameOver() {

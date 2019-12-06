@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 public class Level2 extends Levels {
 
     private static int MAX_MOVES = 20;
-    private static long INITIAL_VALUE = SIZE * SIZE;
+    private static Integer INITIAL_VALUE = SIZE * SIZE;
 
     @Override
     public String getLevel_name() {
@@ -56,11 +56,11 @@ public class Level2 extends Levels {
 
     private static class Level2State extends GameState {
         private long maxMoves;
-        private long secondScore;
 
         Level2State(int maxMoves) {
             this.maxMoves = maxMoves;
             this.secondScore = INITIAL_VALUE;
+            this.initialValue = INITIAL_VALUE;
 
         }
 
@@ -72,7 +72,7 @@ public class Level2 extends Levels {
             return secondScore == 0;
         }
 
-        // Retorna el el segundo score
+        // Retorna el segundo score
         public String getSecondScore() { return ((Long)secondScore).toString(); }
 
         void decreaseGoldenRemaining(int amount){

@@ -1,11 +1,6 @@
 package game.frontend;
 
-import game.backend.CandyGame;
-import game.backend.level.Level1;
-import game.backend.level.Level2;
-import game.backend.level.Level3;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

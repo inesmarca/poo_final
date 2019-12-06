@@ -9,6 +9,7 @@ import game.backend.element.Wall;
 public abstract class Levels extends Grid {
     private Cell wallCell;
     Cell candyGenCell;
+    private Integer INITIAL_VALUE;
 
 
     protected void CreateCandyGenCell() {
@@ -70,6 +71,5 @@ public abstract class Levels extends Grid {
     public String getLevel_name() {
         return null;
     }
-
 
 }

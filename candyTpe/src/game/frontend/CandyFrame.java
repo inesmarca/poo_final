@@ -30,7 +30,7 @@ public class CandyFrame extends VBox {
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
 		getChildren().add(boardPanel);
-		scorePanel = new ScorePanel();
+		scorePanel = new ScorePanel(game().getInitialValue());
 		getChildren().add(scorePanel);
 		game.initGame();
 		GameListener listener;

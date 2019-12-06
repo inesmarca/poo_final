@@ -4,8 +4,8 @@ public abstract class GameState {
 	
 	private long score = 0;
 	private int moves = 0;
-	private long secondScore;
-	private long initialValue;
+	protected long secondScore;
+	protected Integer initialValue;
 	
 	public void addScore(long value) {
 		this.score = this.score + value;
@@ -22,9 +22,9 @@ public abstract class GameState {
 		moves++;
 	}
 	
-	public int getMoves() {
-		return moves;
-	}
+	public int getMoves() { return moves; }
+
+	public Integer getInitialValue() { return initialValue; }
 	
 	public abstract boolean gameOver();
 	

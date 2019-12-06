@@ -3,12 +3,12 @@ package game.backend.level;
 import game.backend.GameState;
 import game.backend.cell.MultiTypeCandyGeneratorCell;
 import game.backend.element.TimedCandy;
+import org.omg.CORBA.INITIALIZE;
 
 public class Level3 extends Levels {
     private static int BOMB_FUSE=10;
     private static int REQUIRED_SCORE = 5000;
     private static int MAX_MOVES = 20;
-
 
     @Override
     public String getLevel_name() {
@@ -99,6 +99,9 @@ public class Level3 extends Levels {
             }
             return getShortestFuse().toString();
         }
+
+        @Override
+        public Integer getInitialValue() { return getShortestFuse(); }
 
     }
 }
