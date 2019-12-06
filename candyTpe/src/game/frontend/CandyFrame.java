@@ -5,13 +5,17 @@ import game.backend.GameListener;
 import game.backend.cell.Cell;
 import game.backend.element.Element;
 
+import game.backend.element.TimedCandy;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
+
+import java.awt.*;
 
 public class CandyFrame extends VBox {
 
@@ -46,17 +50,22 @@ public class CandyFrame extends VBox {
 						Cell cell = CandyFrame.this.game.get(i, j);
 						Element element = cell.getContent();
 						Image image = images.getImage(element);
-						/** cambio en el codigo, esto nos permite actualizar el valor de el background.
-						 * mandamos la celda para que la funcion tenga informacion sobre que color mostrar.
-						 */
+
 						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null, null)));
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, cell.getBackground())));
+                        timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, cell.getBackground())));
+
+
+
+
+
 
 					}
 					frameTime = frameTime.add(frameGap);
 				}
 				timeLine.play();
 
+				String secondScore = ((Long)game().getSecondScore()).toString();
+				scorePanel.updateSecondScore(secondScore);
 			}
 			@Override
 			public void cellExplosion(Element e) {
@@ -84,9 +93,7 @@ public class CandyFrame extends VBox {
 							message = message + " Finished - Loser !";
 						}
 					}
-					String secondScore = ((Long)game().getSecondScore()).toString();
 					scorePanel.updateScore(message);
-					scorePanel.updateSecondScore(secondScore);
 					lastPoint = null;
 				}
 			}

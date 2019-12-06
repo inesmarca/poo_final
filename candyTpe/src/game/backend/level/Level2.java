@@ -69,7 +69,7 @@ public class Level2 extends Levels {
             return secondScore == 0;
         }
 
-        // Retorna el el segundo score
+        // Retorna el segundo score
         public long getSecondScore() { return secondScore; }
 
         void decreaseGoldenRemaining(int amount){

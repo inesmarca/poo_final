@@ -14,11 +14,9 @@ public class ScorePanel extends BorderPane {
 		setStyle("-fx-background-color: #5490ff");
 		scoreLabel = new Label("0");
 		/**
-		 *
 		 */
 		secondScore = new Label("-1");
 		/**
-		 *
 		 */
 		scoreLabel.setAlignment(Pos.CENTER);
 		scoreLabel.setStyle("-fx-font-size: 24");
@@ -30,7 +28,7 @@ public class ScorePanel extends BorderPane {
 	public void updateScore(String text) {
 		scoreLabel.setText(text);
 	}
-
+	// updetea el segundo score
 	public void updateSecondScore(String text) {
 		secondScore.setText(text);
 	}
