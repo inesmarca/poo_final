@@ -56,13 +56,9 @@ public class CandyFrame extends VBox {
 
                         // este codigo pregunta al tipe element si es que tiene algun mensaje para mostrar.
 						// de ser asi, tomamos el mensaje y lo mandamos al set image para actualizar la pantalla.
-                        String displaytext;
-                        if (cell.getContent().DisplayableText()) {
-							displaytext= cell.getContent().DisplayText();
-						}
-                        else displaytext=null;
+
 						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null, null,null)));
-                        timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, cell.getBackground(),displaytext)));
+                        timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image, cell.getBackground(),cell.getContent().DisplayText())));
 
 
 
@@ -75,8 +71,7 @@ public class CandyFrame extends VBox {
 				timeLine.play();
 
 				// Movi el update del secondScore a esta parte para que ya tome un valor inicial apropiado
-				String secondScore = ((Long)game().getSecondScore()).toString();
-				scorePanel.updateSecondScore(secondScore);
+
 			}
 			@Override
 			public void cellExplosion(Element e) {
@@ -105,6 +100,9 @@ public class CandyFrame extends VBox {
 						}
 					}
 					scorePanel.updateScore(message);
+					String secondScore = ((Long)game().getSecondScore()).toString();
+					scorePanel.updateSecondScore(secondScore);
+
 					lastPoint = null;
 				}
 			}
