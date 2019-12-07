@@ -41,5 +41,8 @@ public class Controller {
         CandyFrame frame = new CandyFrame(game, window, rootScene);
         Scene scene = new Scene(frame);
         window.setScene(scene);
+        window.setResizable(false);
+        window.setTitle(game.getLevel());
+
     }
 }
