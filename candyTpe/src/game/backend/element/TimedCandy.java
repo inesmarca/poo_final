@@ -1,7 +1,5 @@
 package game.backend.element;
 
-import java.util.Objects;
-
 public class TimedCandy extends Candy {
 
     private int time_left = 10;
@@ -27,21 +25,22 @@ public class TimedCandy extends Candy {
     public String getFullKey(){
         return getColor()+"-TimedCandy";
     }
+//los metodos equal y hashcode no pueden ser soobre escritos porque el programa usa el equals para determinar si una figura es compatible o no.
+// y para seguir las buenas practicas de java, un elemento que tiene el mismo equals no puede tener un hashcode diferente.
 
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof TimedCandy)) return false;
+//        if (!super.equals(o)) return false;
+//        TimedCandy that = (TimedCandy) o;
+//        return time_left == that.time_left;
+//    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof TimedCandy)) return false;
-        if (!super.equals(o)) return false;
-        TimedCandy that = (TimedCandy) o;
-        return time_left == that.time_left;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), time_left);
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(super.hashCode(), time_left);
+//    }
 
     @Override
     public boolean DisplayableText(){
