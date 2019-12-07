@@ -27,7 +27,7 @@ public class TimedCandy extends Candy {
     }
 //los metodos equal y hashcode no pueden ser soobre escritos porque el programa usa el equals para determinar si una figura es compatible o no.
 // y para seguir las buenas practicas de java, un elemento que tiene el mismo equals no puede tener un hashcode diferente.
-
+//
 //    @Override
 //    public boolean equals(Object o) {
 //        if (this == o) return true;

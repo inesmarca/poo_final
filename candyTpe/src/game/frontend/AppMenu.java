@@ -1,7 +1,6 @@
 package game.frontend;
 
 import javafx.application.Platform;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -15,7 +14,9 @@ public class AppMenu extends MenuBar {
         MenuItem back = new MenuItem("Atras");
         back.setOnAction(event -> {
             window.setScene(rootScene);
+            window.setTitle("Candy Crush");
         });
+
         MenuItem exitMenuItem = new MenuItem("Salir");
         exitMenuItem.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
