@@ -8,6 +8,7 @@ public class Level3 extends Levels {
     private static int BOMB_FUSE=10;
     private static int REQUIRED_SCORE = 5000;
     private static int MAX_MOVES = 20;
+    private static String SECOND_LABEL = "Bomb Timer:";
 
 
     @Override
@@ -75,6 +76,8 @@ public class Level3 extends Levels {
         private Level3State(long requiredScore, int maxMoves) {
             this.requiredScore = requiredScore;
             this.maxMoves = maxMoves;
+            this.hasSecondScore = true;
+            this.secondLabel = SECOND_LABEL;
         }
 
         boolean bombExploded() {

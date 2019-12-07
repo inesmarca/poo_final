@@ -9,6 +9,7 @@ public class Level2 extends Levels {
 
     private static int MAX_MOVES = 20;
     private static long INITIAL_VALUE = SIZE * SIZE;
+    private static String SECOND_LABEL = "Remaining blocks:";
 
     @Override
     public String getLevel_name() {
@@ -56,12 +57,12 @@ public class Level2 extends Levels {
 
     private static class Level2State extends GameState {
         private long maxMoves;
-        private long secondScore;
 
         Level2State(int maxMoves) {
             this.maxMoves = maxMoves;
             this.secondScore = INITIAL_VALUE;
-
+            this.hasSecondScore = true;
+            this.secondLabel = SECOND_LABEL;
         }
 
         public boolean gameOver() {

@@ -4,8 +4,9 @@ public abstract class GameState {
 	
 	private long score = 0;
 	private int moves = 0;
-	private long secondScore;
-	private long initialValue;
+	protected boolean hasSecondScore = false;
+	protected String secondLabel;
+	protected long secondScore;
 	
 	public void addScore(long value) {
 		this.score = this.score + value;
@@ -15,9 +16,6 @@ public abstract class GameState {
 		return score;
 	}
 
-	// retorna el segundo score
-	public String getSecondScore() { return ((Long)secondScore).toString(); }
-	
 	public void addMove() {
 		moves++;
 	}
@@ -30,4 +28,11 @@ public abstract class GameState {
 	
 	public abstract boolean playerWon();
 
+	// retorna el segundo score
+	public String getSecondScore() { return ((Long)secondScore).toString(); }
+
+	// retorna si el nivel tiene dos scores
+	public boolean isHasSecondScore() { return hasSecondScore; }
+
+	public String getSecondLabel() { return secondLabel; }
 }

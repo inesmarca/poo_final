@@ -30,11 +30,15 @@ public class CandyFrame extends VBox {
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
 		getChildren().add(boardPanel);
-		scorePanel = new ScorePanel();
-		getChildren().add(scorePanel);
+		// Sino no se puede usar valores iniciales del nivel
 		game.initGame();
 
-		scorePanel.updateSecondScore(game().getSecondScore());
+		scorePanel = new ScorePanel(game().isHasSecondScore(), game().getSecondLabel());
+		getChildren().add(scorePanel);
+
+		if (game().isHasSecondScore()) {
+			scorePanel.updateSecondScore(game().getSecondScore());
+		}
 
 		GameListener listener;
 		game.addGameListener(listener = new GameListener() {
@@ -100,8 +104,9 @@ public class CandyFrame extends VBox {
 						}
 					}
 					scorePanel.updateScore(message);
-					String secondScore = game().getSecondScore();
-					scorePanel.updateSecondScore(secondScore);
+					if (game().isHasSecondScore()) {
+						scorePanel.updateSecondScore(game().getSecondScore());
+					}
 
 					lastPoint = null;
 				}

@@ -49,7 +49,14 @@ public class CandyGame implements GameListener {
 		return state.getScore();
 	}
 
+	// Retorna el secondScore
 	public String getSecondScore() { return state.getSecondScore(); }
+
+	// Retorna si el nivel tiene dos scores
+	public boolean isHasSecondScore() { return state.isHasSecondScore(); }
+
+	// Retorna el string del secondLabel
+	public String getSecondLabel() { return state.getSecondLabel(); }
 	
 	public boolean isFinished() {
 		return state.gameOver();

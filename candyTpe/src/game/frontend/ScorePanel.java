@@ -9,36 +9,30 @@ public class ScorePanel extends BorderPane {
 
 	private Label scoreLabel;
 	private Label secondScore;
+	private String secondTitle;
 
-	public ScorePanel() {
+	public ScorePanel(boolean hasSecondScore, String secondTitle) {
+		this.secondTitle = secondTitle;
 		setStyle("-fx-background-color: #5490ff");
-		scoreLabel = new Label("0");
+		scoreLabel = new Label("Score: 0");
 
 		scoreLabel.setAlignment(Pos.CENTER);
 		scoreLabel.setStyle("-fx-font-size: 24");
-		secondScore = new Label();
-
-		secondScore.setStyle("-fx-font-size: 24");
-		setLeft(scoreLabel);
-		setRight(secondScore);
-
-		/** Quise hacer lo de initial value pero no funciono
-		if (game.getInitialValue() != null) {
-			secondScore = new Label(game.getInitialValue().toString());
+		if (hasSecondScore) {
+			secondScore = new Label();
 			secondScore.setStyle("-fx-font-size: 24");
 			setLeft(scoreLabel);
 			setRight(secondScore);
 		} else {
 			setCenter(scoreLabel);
 		}
-		 */
 	}
 	
 	public void updateScore(String text) {
-		scoreLabel.setText(text);
+		scoreLabel.setText(String.format("Score: %s", text));
 	}
 
 	public void updateSecondScore(String text) {
-		secondScore.setText(text);
+		secondScore.setText(String.format("%s %s", secondTitle, text));
 	}
 }
