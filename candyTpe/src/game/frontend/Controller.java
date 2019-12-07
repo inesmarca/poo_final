@@ -24,12 +24,10 @@ public class Controller {
 
     public void Level1(ActionEvent actionEvent) {
         selectLevel(Level1.class);
-        //Stage.getWindows().get(0).hide();
     }
 
     public void Level2(ActionEvent actionEvent){
         selectLevel(Level2.class);
-        //Stage.getWindows().get(0).hide();
     }
 
     public void Level3(ActionEvent actionEvent) {

@@ -5,7 +5,7 @@ import game.backend.element.Element;
 import game.backend.level.Levels;
 
 public class CandyGame implements GameListener {
-	
+	// se actulizo el tipo para proteger el codigo y no que reciba cualquier clase
 	private Class<? extends Levels> levelClass;
 	private Grid grid;
 	private GameState state;

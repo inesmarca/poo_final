@@ -4,7 +4,10 @@ import game.backend.GameState;
 import game.backend.cell.MultiTypeCandyGeneratorCell;
 import game.backend.element.TimedCandy;
 
+// la clase Level3 modela TimeBomb
+
 public class Level3 extends Levels {
+    //guarda el temporizador con el que se inicializan las bombas
     private static int BOMB_FUSE=10;
     private static int REQUIRED_SCORE = 5000;
     private static int MAX_MOVES = 20;
@@ -67,6 +70,7 @@ public class Level3 extends Levels {
             return null;
         }
         return shortest_fuse;
+        //retorna la mecha mas corta, de no encontrar ninguna bomba retorna null
     }
 
     private class Level3State extends GameState {
@@ -79,15 +83,15 @@ public class Level3 extends Levels {
             this.hasSecondScore = true;
             this.secondLabel = SECOND_LABEL;
         }
-
+        // revisa si exploto alguna bomba
         boolean bombExploded() {
             Integer value = getShortestFuse();
             return value != null && value == 0;
         }
-
+        // revisa si el juego termino, porque gano el jugador, exploto una bomba o se le acabaron los turnos
         @Override
         public boolean gameOver() {
-            return bombExploded() || getMoves() >= maxMoves;
+            return playerWon() || bombExploded() || getMoves() >= maxMoves;
         }
 
         @Override

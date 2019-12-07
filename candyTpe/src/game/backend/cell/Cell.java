@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 
 public class Cell {
-	private Color background;
+	private Color background;	// contiene el color del background
 	private Grid grid;
 	private Cell[] around = new Cell[Direction.values().length];
 	private Element content;
@@ -18,13 +18,7 @@ public class Cell {
 		this.content = new Nothing();
 
 	}
-	public Cell(Grid grid,Color background) {
-		this.grid = grid;
-		this.content = new Nothing();
-		this.background=background;
 
-	}
-	
 	public void setAround(Cell up, Cell down, Cell left, Cell right) {
 		this.around[Direction.UP.ordinal()] = up;
 		this.around[Direction.DOWN.ordinal()] = down;
@@ -48,6 +42,7 @@ public class Cell {
 		return content;
 	}
 
+	// getter y setter del background
 	public Color getBackground() {
 		return background;
 	}

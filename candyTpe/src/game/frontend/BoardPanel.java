@@ -14,7 +14,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class BoardPanel extends TilePane {
-
+// cambiamos a Stackpane como recomendo la catedra
 	private StackPane[][] cells;
 
 	public BoardPanel(final int rows, final int columns, final int cellSize) {
@@ -35,6 +35,7 @@ public class BoardPanel extends TilePane {
 		cells[row][column].getChildren().add(new ImageView(image));
 
 		//se fija si recibe un color de background, si lo recibe entonces le agrega un background al item.
+		//sino no hace nada
 		if (color!=null){
 			Light.Distant spotlight = new Light.Distant();
 			spotlight.setColor(color);

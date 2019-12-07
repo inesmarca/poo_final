@@ -6,7 +6,7 @@ public class Level1 extends Levels {
 	
 	private static int REQUIRED_SCORE = 5000;
 	private static int MAX_MOVES = 20;
-
+	// establece el nombre del nivel
 	@Override
 	public String getLevel_name() {
 		return "Level 1";

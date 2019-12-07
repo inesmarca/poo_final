@@ -25,9 +25,8 @@ public abstract class Element {
 		return 0;
 	}
 
-	public boolean DisplayableText(){
-		return false;
-	}
+	// devuelve un string para tener como texto en un overlay,
+	// por default esta en null pero cualquier clase que extinda Element lo puede sobreescribir
 
 	public String DisplayText(){return null;}
 	

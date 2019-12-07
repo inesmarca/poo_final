@@ -3,11 +3,12 @@ package game.backend.level;
 import game.backend.GameState;
 import javafx.scene.paint.Color;
 
-
+// la clase level2 modela el golden board
 
 public class Level2 extends Levels {
 
     private static int MAX_MOVES = 20;
+    // son strings para poblar el scorepanel
     private static long INITIAL_VALUE = SIZE * SIZE;
     private static String SECOND_LABEL = "Remaining blocks:";
 
@@ -34,23 +35,26 @@ public class Level2 extends Levels {
                     if (super.g()[i2][k].getBackground()==null){
                         super.g()[i2][k].setBackground(Color.YELLOW);
                         removeAmount++;
+                        //recorre la fila y si no tiene un fondo lo cambia a amarillo y guarda la cantidad de cambios
                     }
                 }
             }
-            // if the column is the same
+            // si no es horizontal el movimiento
             else {
                 for (int k = 0; k < SIZE; k++) {
                     if (super.g()[k][j1].getBackground()==null){
                         super.g()[k][j1].setBackground(Color.YELLOW);
                         removeAmount++;
+                        //recorre la fila y si no tiene un fondo lo cambia a amarillo y guarda la cantidad de cambios
                     }
                 }
             }
         }
         state.decreaseGoldenRemaining(removeAmount);
+        //decrementa la cantidad de golden que quedan despues de la movida
         return aux;
     }
-
+    // revisa si la movida fue horizontal o vertical
     private boolean horizontalMove(int i1, int i2) {
         return i1 - i2 == 0;
     }
@@ -68,7 +72,7 @@ public class Level2 extends Levels {
         public boolean gameOver() {
             return playerWon() || getMoves() >= maxMoves;
         }
-
+    // se fija que la cantidad de golden remaining sea 0.
         public boolean playerWon() {
             return secondScore == 0;
         }

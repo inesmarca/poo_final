@@ -6,11 +6,14 @@ import game.backend.cell.CandyGeneratorCell;
 import game.backend.cell.Cell;
 import game.backend.element.Wall;
 
+// esta es la clase Abstracta de la cual extienden todos los niveles y contiene en su mayoria codigo que todas los niveles requieren.
+// la mayoria del codigo proviene de la clase Level1.
+
 public abstract class Levels extends Grid {
     private Cell wallCell;
     Cell candyGenCell;
 
-
+    // inicializa el generador de candies. puede ser sobreescrito para distintas generaciones.
     protected void CreateCandyGenCell() {
         this.candyGenCell= new CandyGeneratorCell(this);
     }
@@ -66,7 +69,7 @@ public abstract class Levels extends Grid {
         }
         return ret;
     }
-
+    // devulve el nombre del nivel
     public String getLevel_name() {
         return null;
     }
