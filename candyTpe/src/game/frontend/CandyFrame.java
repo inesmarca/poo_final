@@ -24,8 +24,10 @@ public class CandyFrame extends VBox {
 	private Point2D lastPoint;
 	private CandyGame game;
 
+	// Los paremtros window y rootScene son usados para la creacion del boton "Atras"
 	public CandyFrame(CandyGame game, Stage window, Scene rootScene) {
 		this.game = game;
+		// Se le manda el stage y scene del menu
 		getChildren().add(new AppMenu(window, rootScene));
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);

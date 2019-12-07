@@ -11,7 +11,9 @@ public class AppMenu extends MenuBar {
 
     public AppMenu(Stage window, Scene rootScene) {
         Menu file = new Menu("Archivo");
-        MenuItem back = new MenuItem("Atras");
+        // Se crea el boton "Atras" que estara dentro del menu file
+        MenuItem back  = new MenuItem("Atras");
+        // Se define que al apretar el boton se vuelve al menu principal
         back.setOnAction(event -> {
             window.setScene(rootScene);
             window.setTitle("Candy Crush");

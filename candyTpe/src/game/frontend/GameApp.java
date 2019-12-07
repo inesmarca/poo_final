@@ -1,11 +1,6 @@
 package game.frontend;
 
-import game.backend.CandyGame;
-import game.backend.level.Level1;
-import game.backend.level.Level2;
-import game.backend.level.Level3;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,11 +19,13 @@ public class GameApp extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		this.window = primaryStage;
 
+		// Se conecta el archivo fxml con esta clase
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("sample.fxml"));
 		Parent root = loader.load();
 
 		scene1 = new Scene(root, 500, 600);
+		// Se mandan los parametros window y scene1 a la clase Controller
 		((Controller) loader.getController()).setPrimaryStage(window).setRootScene(scene1);
 
 		window.setTitle("Candy Crush");

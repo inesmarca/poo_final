@@ -22,6 +22,7 @@ public class Controller {
         this.rootScene = rootScene;
     }
 
+    // Acciones que corren al apretar dichos botones
     public void Level1(ActionEvent actionEvent) {
         selectLevel(Level1.class);
     }
@@ -34,8 +35,10 @@ public class Controller {
         selectLevel(Level3.class);
     }
 
+    // Crea la pantalla para el nivel seleccionado
     public void selectLevel( Class<? extends Levels> level) {
         CandyGame game = new CandyGame( level);
+        // Se mandan las variables window y rootScene para poder crear el boton atras
         CandyFrame frame = new CandyFrame(game, window, rootScene);
         Scene scene = new Scene(frame);
         window.setScene(scene);
